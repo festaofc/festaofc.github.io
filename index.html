@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FESTA — Kronic Bday Bash · Vol. 02</title>
 <meta name="description" content="FESTA · Fiesta underground de música electrónica en Venezuela. Tech house y afro house. Kronic Bday Bash, Vol. 02 — 28.11.2026, secret location.">
+<link rel="preload" as="image" type="image/webp" imagesrcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,900&family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -26,7 +27,8 @@
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
+  img{display:block;max-width:100%;height:auto}
+  picture{display:contents}
   ::selection{background:var(--o);color:#000}
   .wide{font-family:var(--wide);font-stretch:125%;font-weight:900;text-transform:uppercase}
   .small{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -286,7 +288,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="photo"><img src="img/hero.jpg" alt="" fetchpriority="high"></div>
+  <div class="photo"><picture><source type="image/webp" srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/hero.jpg" alt="" fetchpriority="high" decoding="async"></picture></div>
 
   <h1>Kronic Bday Bash <span class="v">Vol. 02</span></h1>
   <p class="sub">FESTA — 28.11.2026 — Secret location</p>
@@ -301,7 +303,7 @@
 <!-- EVENTOS -->
 <section id="eventos" class="cards" aria-label="Eventos">
   <a class="card reveal" href="https://www.instagram.com/reel/DZLxhVGRstb/" target="_blank" rel="noopener">
-    <div class="thumb"><img src="img/flyer-vol01.jpg" alt="Flyer FESTA Vol. 01" width="334" height="596"></div>
+    <div class="thumb"><picture><source type="image/webp" srcset="img/flyer-vol01-334.webp 334w" sizes="84px"><img src="img/flyer-vol01.jpg" alt="Flyer FESTA Vol. 01" width="334" height="596" decoding="async"></picture></div>
     <div class="info"><b>Vol. 01 · Maracaibo</b><span class="d">18.09.2026 · Rollertec Club</span><span class="pill">Sold out</span></div>
   </a>
   <a class="card reveal" href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener">
@@ -316,7 +318,7 @@
 
 <!-- ESCENARIO -->
 <div class="led">
-  <img src="img/dj.jpg" alt="DJ en la cabina durante FESTA Vol. 01" loading="lazy">
+  <picture><source type="image/webp" srcset="img/dj-800.webp 800w, img/dj-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/dj.jpg" alt="DJ en la cabina durante FESTA Vol. 01" loading="lazy" decoding="async"></picture>
   <p class="reveal">Last night<br>a DJ saved<br><span>my life</span></p>
 </div>
 
@@ -324,7 +326,7 @@
 <section id="festa" class="feature">
   <div class="fbox reveal">
     <a class="fimg" href="https://www.instagram.com/reel/DZLxhVGRstb/" target="_blank" rel="noopener">
-      <img src="img/flyer-vol01.jpg" alt="Flyer oficial de FESTA Vol. 01" width="334" height="596" loading="lazy">
+      <picture><source type="image/webp" srcset="img/flyer-vol01-334.webp 334w" sizes="(max-width:900px) 300px, 340px"><img src="img/flyer-vol01.jpg" alt="Flyer oficial de FESTA Vol. 01" width="334" height="596" loading="lazy" decoding="async"></picture>
       <span>Ver el reel ↗</span>
     </a>
     <div class="fcontent">
@@ -337,7 +339,7 @@
 
 <!-- UBICACION -->
 <section id="ubicacion" class="where reveal">
-  <figure class="wphoto"><img src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy"><figcaption class="small">Vol. 01 · Rollertec Club</figcaption></figure>
+  <figure class="wphoto"><picture><source type="image/webp" srcset="img/cabina-600.webp 600w, img/cabina-1000.webp 1000w" sizes="(max-width:900px) 380px, 420px"><img width="1000" height="1500" src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy" decoding="async"></picture><figcaption class="small">Vol. 01 · Rollertec Club</figcaption></figure>
   <div class="wtext">
   <span class="small">Dónde estamos</span>
   <h2>Maracaibo,<br>Venezuela</h2>
@@ -369,11 +371,11 @@
   <span class="small">Galería · FESTA Vol. 01</span>
   <h2>Así se vivió</h2>
   <div class="gal">
-    <a href="img/kronic.jpg" target="_blank" rel="noopener" class="g1"><img src="img/kronic.jpg" alt="Kronic en la cabina durante FESTA Vol. 01" loading="lazy"></a>
-    <a href="img/cabina.jpg" target="_blank" rel="noopener" class="g2"><img src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy"></a>
-    <a href="img/hero.jpg" target="_blank" rel="noopener"><img src="img/hero.jpg" alt="La pista de FESTA Vol. 01 con luces naranjas" loading="lazy"></a>
-    <a href="img/dj.jpg" target="_blank" rel="noopener"><img src="img/dj.jpg" alt="DJ con la mano arriba en FESTA Vol. 01" loading="lazy"></a>
-    <a href="img/pista.jpg" target="_blank" rel="noopener" class="g3"><img src="img/pista.jpg" alt="La pista llena frente a la cabina en FESTA Vol. 01" loading="lazy"></a>
+    <a href="img/kronic.jpg" target="_blank" rel="noopener" class="g1"><picture><source type="image/webp" srcset="img/kronic-800.webp 800w, img/kronic-1600.webp 1600w" sizes="(max-width:900px) 100vw, 50vw"><img width="1600" height="1066" src="img/kronic.jpg" alt="Kronic en la cabina durante FESTA Vol. 01" loading="lazy" decoding="async"></picture></a>
+    <a href="img/cabina.jpg" target="_blank" rel="noopener" class="g2"><picture><source type="image/webp" srcset="img/cabina-600.webp 600w, img/cabina-1000.webp 1000w" sizes="(max-width:900px) 50vw, 25vw"><img width="1000" height="1500" src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy" decoding="async"></picture></a>
+    <a href="img/hero.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" sizes="(max-width:900px) 50vw, 25vw"><img width="2000" height="1333" src="img/hero.jpg" alt="La pista de FESTA Vol. 01 con luces naranjas" loading="lazy" decoding="async"></picture></a>
+    <a href="img/dj.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="img/dj-800.webp 800w, img/dj-1600.webp 1600w" sizes="(max-width:900px) 50vw, 25vw"><img width="2000" height="1333" src="img/dj.jpg" alt="DJ con la mano arriba en FESTA Vol. 01" loading="lazy" decoding="async"></picture></a>
+    <a href="img/pista.jpg" target="_blank" rel="noopener" class="g3"><picture><source type="image/webp" srcset="img/pista-800.webp 800w, img/pista-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/pista.jpg" alt="La pista llena frente a la cabina en FESTA Vol. 01" loading="lazy" decoding="async"></picture></a>
   </div>
 </section>
 
