@@ -53,6 +53,10 @@
 
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:min(100svh,880px);margin-top:-118px;padding-top:150px;overflow:hidden;text-align:center;isolation:isolate}
+  .photo{position:absolute;inset:0;z-index:-3}
+  .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:saturate(1.15) contrast(1.05)}
+  .photo::after{content:"";position:absolute;inset:0;background:
+      linear-gradient(180deg,rgba(10,10,11,.92) 0%,rgba(10,10,11,.55) 28%,rgba(255,90,20,.12) 55%,rgba(10,10,11,.4) 78%,#0a0a0b 100%)}
   .smoke{position:absolute;inset:-10%;z-index:-3;
     background:
       radial-gradient(ellipse 45% 40% at 50% 62%,rgba(255,120,40,.95),transparent 70%),
@@ -108,20 +112,15 @@
   .pill.hot{background:var(--o);border-color:var(--o);color:#000}
 
   /* ---------- LED / ESCENARIO ---------- */
-  .led{position:relative;margin-top:clamp(70px,9vw,120px);height:clamp(420px,62vw,720px);overflow:hidden;isolation:isolate;
-    background:radial-gradient(ellipse 80% 60% at 50% 45%,rgba(120,30,0,.55),transparent 70%),#070707}
-  .screen{position:absolute;left:50%;top:14%;width:min(78%,980px);aspect-ratio:2.4;transform:translateX(-50%);z-index:-1;
-    background:linear-gradient(180deg,#ff6a1f,#ff4a08);box-shadow:0 0 120px 30px rgba(255,90,20,.55),0 0 300px 80px rgba(255,90,20,.25);display:grid;place-items:center;overflow:hidden}
-  .screen::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(0,0,0,.12) 0 2px,transparent 2px 6px),repeating-linear-gradient(0deg,rgba(0,0,0,.1) 0 2px,transparent 2px 6px)}
-  .screen p{padding-bottom:16%!important;font-family:var(--wide);font-stretch:125%;font-weight:900;text-transform:uppercase;color:#1a0700;font-size:clamp(18px,4.2vw,58px);line-height:.95;text-align:center;opacity:.85;padding:0 6%}
-  .led .floor{position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(180deg,#120804,#050505 70%)}
-  .led .floor::before{content:"";position:absolute;left:12%;right:12%;top:0;height:3px;background:var(--o);box-shadow:0 0 30px 6px rgba(255,90,20,.7)}
-  .led .dj{width:min(300px,46vw);bottom:22%;color:#050505}
-  .led .glow{position:absolute;left:50%;bottom:24%;width:60%;height:24%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(255,110,40,.6),transparent 70%);filter:blur(10px);z-index:-1}
+  .led{position:relative;margin-top:clamp(70px,9vw,120px);height:clamp(440px,60vw,760px);overflow:hidden;display:flex;align-items:flex-end}
+  .led img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+  .led::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0a0a0b 0%,rgba(10,10,11,.1) 25%,rgba(10,10,11,.25) 60%,#0a0a0b 100%),linear-gradient(90deg,rgba(10,10,11,.75),transparent 55%)}
+  .led p{position:relative;z-index:1;padding:0 var(--g) clamp(150px,14vw,200px);font-family:var(--wide);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(30px,5.6vw,80px);line-height:.95;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+  .led p span{color:var(--o)}
 
   /* ---------- FEATURE ---------- */
   section{scroll-margin-top:110px}
-  .feature{max-width:1100px;margin:clamp(-120px,-8vw,-60px) auto 0;padding:0 var(--g);position:relative;z-index:4}
+  .feature{max-width:1100px;margin:clamp(-110px,-7vw,-50px) auto 0;padding:0 var(--g);position:relative;z-index:4}
   .fbox{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:clamp(20px,4vw,48px);align-items:center;background:linear-gradient(180deg,#151517,#0e0e10);
     border:1px solid rgba(255,90,20,.35);border-radius:22px;padding:clamp(16px,2.5vw,28px);box-shadow:0 0 0 1px rgba(255,90,20,.08),0 30px 80px rgba(255,90,20,.18)}
   .fimg{border-radius:14px;overflow:hidden;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.5)}
@@ -136,11 +135,14 @@
   .chips span{border:1px solid rgba(255,90,20,.5);color:var(--o2);border-radius:999px;padding:7px 14px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 
   /* ---------- DONDE ---------- */
-  .where{max-width:1100px;margin:0 auto;padding:clamp(90px,11vw,140px) var(--g) 0;text-align:center}
+  .where{max-width:1180px;margin:0 auto;padding:clamp(90px,11vw,140px) var(--g) 0;display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+  .wphoto{border-radius:18px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(255,90,20,.2);border:1px solid rgba(255,90,20,.3)}
+  .wphoto img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .wphoto figcaption{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.7);border-radius:6px;padding:6px 10px;color:var(--ink)}
   .where .small{display:block;margin-bottom:12px;color:var(--o)}
   .where h2{font-family:var(--wide);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(34px,6.4vw,84px);line-height:.98}
-  .where p{color:var(--muted);font-size:15px;line-height:1.6;max-width:56ch;margin:18px auto 30px}
-  .spots{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto}
+  .where p{color:var(--muted);font-size:15px;line-height:1.6;max-width:56ch;margin:18px 0 30px}
+  .spots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .spot{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:left}
   .spot b{display:block;font-family:var(--wide);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(17px,2vw,22px);margin:8px 0 6px}
   .spot i{font-style:normal;font-size:13px;color:var(--muted)}
@@ -189,11 +191,15 @@
     .fcontent{text-align:center}
     .ftext{margin-left:auto;margin-right:auto}
     .chips{justify-content:center}
+    .where{grid-template-columns:1fr}
+    .wphoto{max-width:380px;width:100%;margin:0 auto}
+    .wtext{text-align:center}
+    .where p{margin-left:auto;margin-right:auto}
   }
   @media (max-width:560px){
     .access span{display:none}
     nav ul{gap:8px 14px;font-size:12px;flex-wrap:wrap}
-    .spots{grid-template-columns:1fr}
+    .spots{grid-template-columns:1fr;text-align:left}
     .hero{padding-top:140px}
     .hero h1 .v{display:block;margin-top:6px}
     .t1{top:50%}.t2{top:60%}.t3{top:74%}
@@ -261,9 +267,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="smoke"></div>
-  <div class="fog"><svg preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#fogf)"/></svg></div>
-  <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div>
+  <div class="photo"><img src="img/hero.jpg" alt="" fetchpriority="high"></div>
 
   <h1>Kronic Bday Bash <span class="v">Vol. 02</span></h1>
   <p class="sub">FESTA — 28.11.2026 — Secret location</p>
@@ -273,8 +277,6 @@
   <div class="tape t2 r"><div class="track"><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span></div></div>
   <div class="tape t3"><div class="track"><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span></div></div>
 
-  <div class="dj" aria-hidden="true"><svg viewBox="0 0 400 300" fill="currentColor"><use href="#dj"/></svg></div>
-  <div class="stage" aria-hidden="true"><i style="left:12%"></i><i style="left:30%;animation-delay:-.8s"></i><i style="left:70%;animation-delay:-1.6s"></i><i style="left:88%;animation-delay:-.4s"></i></div>
 </section>
 
 <!-- EVENTOS -->
@@ -294,11 +296,9 @@
 </section>
 
 <!-- ESCENARIO -->
-<div class="led" aria-hidden="true">
-  <div class="screen"><p>Last night<br>a DJ saved<br>my life</p></div>
-  <div class="glow"></div>
-  <div class="dj"><svg viewBox="0 0 400 300" fill="currentColor"><use href="#dj"/></svg></div>
-  <div class="floor"></div>
+<div class="led">
+  <img src="img/dj.jpg" alt="DJ en la cabina durante FESTA Vol. 01" loading="lazy">
+  <p class="reveal">Last night<br>a DJ saved<br><span>my life</span></p>
 </div>
 
 <!-- FESTA -->
@@ -318,12 +318,15 @@
 
 <!-- UBICACION -->
 <section id="ubicacion" class="where reveal">
+  <figure class="wphoto"><img src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy"><figcaption class="small">Vol. 01 · Rollertec Club</figcaption></figure>
+  <div class="wtext">
   <span class="small">Dónde estamos</span>
   <h2>Maracaibo,<br>Venezuela</h2>
   <p>Nacimos en Maracaibo, la #HornoCity. Cada edición de FESTA cambia de lugar, y la ubicación se revela solo a quienes están en la lista.</p>
   <div class="spots">
     <div class="spot"><span class="small">Vol. 01</span><b>Rollertec Club</b><i>Maracaibo · 18.09.2026</i></div>
     <div class="spot hot"><span class="small">Vol. 02</span><b>Secret location</b><i>Se revela a los invitados · 28.11.2026</i></div>
+  </div>
   </div>
 </section>
 
