@@ -162,6 +162,18 @@
   .lu .b2b{font-size:.5em;color:var(--o);margin:0 10px}
   .lu-meta{margin-top:26px;display:flex;justify-content:center;gap:10px 22px;flex-wrap:wrap}
 
+  /* ---------- GALERIA ---------- */
+  .gallery{max-width:1240px;margin:0 auto;padding:clamp(90px,11vw,140px) var(--g) 0;text-align:center}
+  .gallery .small{display:block;margin-bottom:12px;color:var(--o)}
+  .gallery h2{font-family:var(--wide);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(24px,3.6vw,42px);line-height:1.05;margin-bottom:30px}
+  .gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:clamp(150px,17vw,250px);gap:10px}
+  .gal a{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line)}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .4s;filter:saturate(1.1)}
+  .gal a:hover img{transform:scale(1.05);filter:saturate(1.3)}
+  .gal a::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 0 var(--o);transition:box-shadow .3s;border-radius:14px}
+  .gal a:hover::after{box-shadow:inset 0 0 0 2px var(--o)}
+  .gal .g1,.gal .g2{grid-row:span 2}
+
   /* ---------- SIGNUP ---------- */
   .signup{max-width:760px;margin:0 auto;padding:clamp(100px,12vw,150px) var(--g) clamp(80px,10vw,120px);text-align:center}
   .signup p{color:var(--muted);font-size:14px;line-height:1.6;margin:14px auto 28px;max-width:56ch}
@@ -200,6 +212,9 @@
     .access span{display:none}
     nav ul{gap:8px 14px;font-size:12px;flex-wrap:wrap}
     .spots{grid-template-columns:1fr;text-align:left}
+    .gal{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+    .gal .g1{grid-column:span 2;grid-row:span 2}
+    .gal .g2{grid-row:span 2}
     .hero{padding-top:140px}
     .hero h1 .v{display:block;margin-top:6px}
     .t1{top:50%}.t2{top:60%}.t3{top:74%}
@@ -259,6 +274,7 @@
         <li><a href="#festa">Qué somos</a></li>
         <li><a href="#ubicacion">Dónde estamos</a></li>
         <li><a href="#lineup">DJs</a></li>
+        <li><a href="#fotos">Fotos</a></li>
         <li><a href="#lista">Contact</a></li>
       </ul>
     </nav>
@@ -343,6 +359,18 @@
     <li><a href="https://www.instagram.com/neyroberts/" target="_blank" rel="noopener">Ney Roberts<sup>↗</sup></a></li>
   </ul>
   <div class="lu-meta"><span class="small">18.09.2026</span><span class="small">10:00 PM</span><span class="small">Rollertec Club</span><span class="small">#HornoCity · Maracaibo</span></div>
+</section>
+
+<!-- GALERIA -->
+<section id="fotos" class="gallery reveal">
+  <span class="small">Galería · FESTA Vol. 01</span>
+  <h2>Así se vivió</h2>
+  <div class="gal">
+    <a href="img/kronic.jpg" target="_blank" rel="noopener" class="g1"><img src="img/kronic.jpg" alt="Kronic en la cabina durante FESTA Vol. 01" loading="lazy"></a>
+    <a href="img/cabina.jpg" target="_blank" rel="noopener" class="g2"><img src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy"></a>
+    <a href="img/hero.jpg" target="_blank" rel="noopener"><img src="img/hero.jpg" alt="La pista de FESTA Vol. 01 con luces naranjas" loading="lazy"></a>
+    <a href="img/dj.jpg" target="_blank" rel="noopener"><img src="img/dj.jpg" alt="DJ con la mano arriba en FESTA Vol. 01" loading="lazy"></a>
+  </div>
 </section>
 
 <!-- LISTA -->
