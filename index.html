@@ -100,11 +100,12 @@
   .event{padding:clamp(90px,12vw,160px) var(--gutter)}
   .event-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:24px;position:relative;z-index:2}
   .event h2{font-weight:900;text-transform:uppercase;letter-spacing:-.05em;line-height:.85;font-size:clamp(52px,11vw,170px)}
+  .vol2{color:var(--blue);white-space:nowrap}
   .past{margin-top:28px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;position:relative;z-index:2}
   .event .spray{right:-2%;top:6%;width:min(60vw,700px)}
-  .details{display:grid;grid-template-columns:repeat(3,1fr);position:relative;z-index:2}
+  .details{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:2}
   .details div{padding:22px 0;border-bottom:1px solid rgba(242,240,236,.18)}
-  .details b{display:block;font-size:clamp(22px,3vw,40px);font-weight:800;letter-spacing:-.03em;margin-top:6px;text-transform:uppercase}
+  .details b{display:block;font-size:clamp(20px,2.3vw,34px);font-weight:800;letter-spacing:-.03em;margin-top:6px;text-transform:uppercase}
   .btn{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:#0c0c0e;padding:18px 28px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:background .25s}
   .btn:hover{background:var(--blue)}
   .btn svg{width:20px;height:20px}
@@ -155,6 +156,7 @@
   }
   @media (max-width:820px){
     .vol{grid-template-columns:1fr}
+    .event .spray{display:none}
     .flyer{position:relative;top:0;max-width:300px;margin:0 auto 40px}
     .bigsun{width:56vw;right:-18vw;top:auto;bottom:-3%;transform:none}
   }
@@ -272,11 +274,12 @@
     </g>
   </svg>
   <div class="event-top reveal">
-    <h2>Kronic<br>Bday Bash</h2>
+    <h2>Kronic<br>Bday Bash <span class="vol2">Vol. 02</span></h2>
     <a href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener" class="btn">Solo invitados <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
   </div>
   <div class="details reveal">
     <div><span class="small">Fecha</span><b>28.11.2026</b></div>
+    <div><span class="small">Lugar</span><b>Secret location</b></div>
     <div><span class="small">Acceso</span><b>Privado</b></div>
     <div><span class="small">Sonido</span><b>Tech · Afro House</b></div>
   </div>
