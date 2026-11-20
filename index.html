@@ -108,7 +108,12 @@
   .brand b{display:flex;align-items:center;gap:8px;font-family:var(--wide);font-stretch:125%;font-weight:900;font-size:clamp(22px,3vw,30px);letter-spacing:.01em;margin-top:3px;
     color:#fff}
   .brand b svg{width:.9em;height:.9em;color:#fff}
-  .access{justify-self:end;display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+  .right{justify-self:end;display:flex;align-items:center;gap:14px}
+  .lang{display:flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+  .lang button{font:800 10px var(--mono);letter-spacing:.1em;color:#fff;background:transparent;border:0;border-radius:999px;padding:5px 9px;cursor:pointer;transition:background .25s,color .25s}
+  .lang button[aria-pressed="true"]{background:rgba(255,255,255,.9);color:#0a0a0b;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+  .lang button:hover:not([aria-pressed="true"]){color:var(--o2)}
+  .access{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
   .access svg{width:20px;height:20px}
   nav ul{display:flex;justify-content:center;gap:clamp(2px,1.2vw,14px);list-style:none;margin-top:8px;font-size:13px;font-weight:700;transition:margin .5s}
   nav a{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6);transition:color .2s}
@@ -335,6 +340,8 @@
   }
   @media (max-width:560px){
     .access span{display:none}
+    .bar .access,.bar .socials a[aria-label="Email"]{display:none}
+    .right{gap:0}
     nav ul{gap:2px 2px;font-size:12px;flex-wrap:wrap}
     nav a{padding:5px 9px}
     .bar{border-radius:24px;padding:10px 14px 8px}
@@ -390,7 +397,7 @@
   </defs>
 </svg>
 
-<a class="skip" href="#main">Saltar al contenido</a>
+<a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
 <header>
   <div class="bar">
     <span class="liquid" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -400,19 +407,19 @@
         <a href="https://www.tiktok.com/@festaofc" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.3 1.9 3.9 4.1 4.1v3.2c-1.5 0-2.9-.4-4.1-1.2v6.2A5.7 5.7 0 1 1 10.8 9.6v3.3a2.5 2.5 0 1 0 2.4 2.5V3h3.3z"/></svg></a>
         <a href="mailto:festaofc@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
       </div>
-      <a href="#" class="brand" aria-label="FESTA — inicio">
+      <a href="#" class="brand" aria-label="FESTA — inicio" data-i18n-attr="aria-label:brand">
         <b translate="no"><svg aria-hidden="true"><use href="#sun"/></svg>FESTA</b>
       </a>
-      <a href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener" class="access" aria-label="Solo invitados: pedir acceso por Instagram"><span>Solo invitados</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v12" stroke-dasharray="2 2"/></svg></a>
+      <div class="right"><div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div><a href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener" class="access" aria-label="Solo invitados: pedir acceso por Instagram" data-i18n-attr="aria-label:accessAria"><span data-i18n="guests">Solo invitados</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v12" stroke-dasharray="2 2"/></svg></a></div>
     </div>
     <nav>
       <ul>
-        <li><a href="#eventos">Fiesta</a></li>
-        <li><a href="#festa">Qué somos</a></li>
-        <li><a href="#ubicacion">Dónde estamos</a></li>
-        <li><a href="#lineup">DJs</a></li>
-        <li><a href="#fotos">Fotos</a></li>
-        <li><a href="#lista">Contact</a></li>
+        <li><a href="#eventos" data-i18n="nav1">Fiesta</a></li>
+        <li><a href="#festa" data-i18n="nav2">Qué somos</a></li>
+        <li><a href="#ubicacion" data-i18n="nav3">Dónde estamos</a></li>
+        <li><a href="#lineup" data-i18n="nav4">DJs</a></li>
+        <li><a href="#fotos" data-i18n="nav5">Fotos</a></li>
+        <li><a href="#lista" data-i18n="nav6">Contact</a></li>
         <span class="blob" aria-hidden="true"></span>
       </ul>
     </nav>
@@ -426,35 +433,35 @@
 
   <h1 translate="no"><span class="w">Kronic</span> <span class="w" style="animation-delay:.08s">Bday</span> <span class="w" style="animation-delay:.16s">Bash</span> <span class="v w" style="animation-delay:.3s">Vol. 02</span></h1>
   <p class="sub">FESTA — 28.11.2026 — Secret location</p>
-  <a class="btn" href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener">Pedir acceso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
-  <div class="count" id="count" aria-live="off"><div class="u"><b data-k="d">--</b><span>Días</span></div><i aria-hidden="true">:</i><div class="u"><b data-k="h">--</b><span>Horas</span></div><i aria-hidden="true">:</i><div class="u"><b data-k="m">--</b><span>Min</span></div><i aria-hidden="true">:</i><div class="u"><b data-k="s">--</b><span>Seg</span></div></div>
-  <p class="count-label" id="countLabel">Para el Kronic Bday Bash</p>
+  <a class="btn" href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener"><span data-i18n="cta">Pedir acceso</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
+  <div class="count" id="count" aria-live="off"><div class="u"><b data-k="d">--</b><span data-i18n="cdd">Días</span></div><i aria-hidden="true">:</i><div class="u"><b data-k="h">--</b><span data-i18n="cdh">Horas</span></div><i aria-hidden="true">:</i><div class="u"><b data-k="m">--</b><span data-i18n="cdm">Min</span></div><i aria-hidden="true">:</i><div class="u"><b data-k="s">--</b><span data-i18n="cds">Seg</span></div></div>
+  <p class="count-label" id="countLabel" data-i18n="cdlabel">Para el Kronic Bday Bash</p>
 
   <div class="tape t1" aria-hidden="true"><div class="track"><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span></div></div>
-  <div class="tape t2 r" aria-hidden="true"><div class="track"><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span></div></div>
+  <div class="tape t2 r" aria-hidden="true"><div class="track"><span>28.11.2026</span><span data-i18n="guests">Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span data-i18n="guests">Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span data-i18n="guests">Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span data-i18n="guests">Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span></div></div>
   <div class="tape t3" aria-hidden="true"><div class="track"><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span></div></div>
 
 </section>
 
 <!-- EVENTOS -->
-<section id="eventos" class="cards" aria-label="Eventos">
+<section id="eventos" class="cards" aria-label="Eventos" data-i18n-attr="aria-label:events">
   <a class="card reveal" href="https://www.instagram.com/reel/DZLxhVGRstb/" target="_blank" rel="noopener">
     <div class="thumb"><svg aria-hidden="true" class="fb"><use href="#sun"/></svg><picture><source type="image/webp" srcset="img/flyer-vol01-334.webp 334w" sizes="84px"><img src="img/flyer-vol01.jpg" alt="Flyer FESTA Vol. 01" width="334" height="596" decoding="async" onerror="this.style.display='none'"></picture></div>
-    <div class="info"><span class="no">N°01</span><b>Vol. 01 · Maracaibo</b><span class="d">18.09.2026 · Rollertec Club</span><span class="pill">Sold out</span></div>
+    <div class="info"><span class="no">N°01</span><b>Vol. 01 · Maracaibo</b><span class="d">18.09.2026 · Rollertec Club</span><span class="pill" data-i18n="sold">Sold out</span></div>
   </a>
   <a class="card reveal" href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener">
     <div class="thumb"><svg aria-hidden="true"><use href="#sun"/></svg></div>
-    <div class="info"><span class="no">N°02</span><b>Vol. 02 · Kronic Bday Bash</b><span class="d">28.11.2026 · Secret location</span><span class="pill hot">Solo invitados</span></div>
+    <div class="info"><span class="no">N°02</span><b>Vol. 02 · Kronic Bday Bash</b><span class="d">28.11.2026 · Secret location</span><span class="pill hot" data-i18n="guests">Solo invitados</span></div>
   </a>
   <a class="card reveal" href="#lista">
     <div class="thumb dark"><svg aria-hidden="true"><use href="#sun"/></svg></div>
-    <div class="info"><span class="no">N°03</span><b>Vol. 03 · Coming soon</b><span class="d">Fecha por anunciar</span><span class="pill">Avísame</span></div>
+    <div class="info"><span class="no">N°03</span><b>Vol. 03 · Coming soon</b><span class="d" data-i18n="tba">Fecha por anunciar</span><span class="pill" data-i18n="notify">Avísame</span></div>
   </a>
 </section>
 
 <!-- ESCENARIO -->
 <div class="led">
-  <picture><source type="image/webp" srcset="img/dj-800.webp 800w, img/dj-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/dj.jpg" alt="DJ en la cabina durante FESTA Vol. 01" loading="lazy" decoding="async"></picture>
+  <picture><source type="image/webp" srcset="img/dj-800.webp 800w, img/dj-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/dj.jpg" alt="DJ en la cabina durante FESTA Vol. 01" data-i18n-attr="alt:altDj" loading="lazy" decoding="async"></picture>
   <p class="reveal">Last night<br><em>a DJ saved</em><br><span>my life</span></p>
 </div>
 
@@ -463,13 +470,13 @@
   <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="fbox reveal">
     <a class="fimg" href="https://www.instagram.com/reel/DZLxhVGRstb/" target="_blank" rel="noopener">
-      <picture><source type="image/webp" srcset="img/flyer-vol01-334.webp 334w" sizes="(max-width:900px) 300px, 340px"><img src="img/flyer-vol01.jpg" alt="Flyer oficial de FESTA Vol. 01" width="334" height="596" loading="lazy" decoding="async"></picture>
-      <span>Ver el reel ↗</span>
+      <picture><source type="image/webp" srcset="img/flyer-vol01-334.webp 334w" sizes="(max-width:900px) 300px, 340px"><img src="img/flyer-vol01.jpg" alt="Flyer oficial de FESTA Vol. 01" data-i18n-attr="alt:altFlyer" width="334" height="596" loading="lazy" decoding="async"></picture>
+      <span data-i18n="reel">Ver el reel ↗</span>
     </a>
     <div class="fcontent">
-      <span class="small" style="color:var(--o)">02 — Qué somos</span><div class="wm" style="margin-top:14px"><b translate="no"><svg aria-hidden="true"><use href="#sun"/></svg>FESTA</b></div>
-      <p class="ftext">Una fiesta underground de música electrónica fundada por <a href="https://www.instagram.com/kronicm/" target="_blank" rel="noopener" style="color:var(--o2)">Kronic</a>. Tech house y afro house con DJs locales, nacionales de Venezuela y los futuros DJs internacionales. Tu pase a una noche donde todo el mundo está en otro planeta.</p>
-      <div class="chips"><span>Tech house</span><span>Afro house</span><span>DJs locales</span><span>Venezuela → mundo</span></div>
+      <span class="small" style="color:var(--o)" data-i18n="aboutLabel">02 — Qué somos</span><div class="wm" style="margin-top:14px"><b translate="no"><svg aria-hidden="true"><use href="#sun"/></svg>FESTA</b></div>
+      <p class="ftext" data-i18n-html="ftext">Una fiesta underground de música electrónica fundada por <a href="https://www.instagram.com/kronicm/" target="_blank" rel="noopener" style="color:var(--o2)">Kronic</a>. Tech house y afro house con DJs locales, nacionales de Venezuela y los futuros DJs internacionales. Tu pase a una noche donde todo el mundo está en otro planeta.</p>
+      <div class="chips"><span>Tech house</span><span>Afro house</span><span data-i18n="chip3">DJs locales</span><span data-i18n="chip4">Venezuela → mundo</span></div>
     </div>
   </div>
 </section>
@@ -479,14 +486,14 @@
 <!-- UBICACION -->
 <section id="ubicacion" class="where reveal" style="position:relative">
   <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
-  <figure class="wphoto"><picture><source type="image/webp" srcset="img/cabina-600.webp 600w, img/cabina-1000.webp 1000w" sizes="(max-width:900px) 380px, 420px"><img width="1000" height="1500" src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy" decoding="async"></picture><figcaption class="small">Vol. 01 · Rollertec Club</figcaption></figure>
+  <figure class="wphoto"><picture><source type="image/webp" srcset="img/cabina-600.webp 600w, img/cabina-1000.webp 1000w" sizes="(max-width:900px) 380px, 420px"><img width="1000" height="1500" src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" data-i18n-attr="alt:altCabina" loading="lazy" decoding="async"></picture><figcaption class="small">Vol. 01 · Rollertec Club</figcaption></figure>
   <div class="wtext">
-  <span class="small">03 — Dónde estamos</span>
+  <span class="small" data-i18n="whereLabel">03 — Dónde estamos</span>
   <h2>Maracaibo,<br>Venezuela</h2>
-  <p>Nacimos en Maracaibo, la #HornoCity. Cada edición de FESTA cambia de lugar, y la ubicación se revela solo a quienes están en la lista.</p>
+  <p data-i18n="whereP">Nacimos en Maracaibo, la #HornoCity. Cada edición de FESTA cambia de lugar, y la ubicación se revela solo a quienes están en la lista.</p>
   <div class="spots">
     <div class="spot"><span class="small">Vol. 01</span><b>Rollertec Club</b><i>Maracaibo · 18.09.2026</i></div>
-    <div class="spot hot"><span class="small">Vol. 02</span><b>Secret location</b><i>Se revela a los invitados · 28.11.2026</i></div>
+    <div class="spot hot"><span class="small">Vol. 02</span><b>Secret location</b><i data-i18n="revealed">Se revela a los invitados · 28.11.2026</i></div>
   </div>
   </div>
 </section>
@@ -494,7 +501,7 @@
 <!-- LINE UP VOL 01 -->
 <section id="lineup" class="lineup reveal">
   <span class="small">04 — Line up · FESTA Vol. 01</span>
-  <h2>DJs con los que<br>hemos compartido</h2>
+  <h2 data-i18n-html="luH">DJs con los que<br>hemos compartido</h2>
   <ul class="lu">
     <li><a href="https://www.instagram.com/fenkydj/" target="_blank" rel="noopener">Fenky<sup>↗</sup></a><em>Special guest</em></li>
     <li><a href="https://www.instagram.com/kronicm/" target="_blank" rel="noopener">Kronic<sup>↗</sup></a></li>
@@ -508,14 +515,14 @@
 
 <!-- GALERIA -->
 <section id="fotos" class="gallery reveal">
-  <span class="small">05 — Galería · FESTA Vol. 01</span>
-  <h2>Así se vivió</h2>
+  <span class="small" data-i18n="galLabel">05 — Galería · FESTA Vol. 01</span>
+  <h2 data-i18n="galH">Así se vivió</h2>
   <div class="gal">
-    <a href="img/kronic.jpg" target="_blank" rel="noopener" class="g1"><picture><source type="image/webp" srcset="img/kronic-800.webp 800w, img/kronic-1600.webp 1600w" sizes="(max-width:900px) 100vw, 50vw"><img width="1600" height="1066" src="img/kronic.jpg" alt="Kronic en la cabina durante FESTA Vol. 01" loading="lazy" decoding="async"></picture></a>
-    <a href="img/cabina.jpg" target="_blank" rel="noopener" class="g2"><picture><source type="image/webp" srcset="img/cabina-600.webp 600w, img/cabina-1000.webp 1000w" sizes="(max-width:900px) 50vw, 25vw"><img width="1000" height="1500" src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" loading="lazy" decoding="async"></picture></a>
-    <a href="img/hero.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" sizes="(max-width:900px) 50vw, 25vw"><img width="2000" height="1333" src="img/hero.jpg" alt="La pista de FESTA Vol. 01 con luces naranjas" loading="lazy" decoding="async"></picture></a>
-    <a href="img/dj.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="img/dj-800.webp 800w, img/dj-1600.webp 1600w" sizes="(max-width:900px) 50vw, 25vw"><img width="2000" height="1333" src="img/dj.jpg" alt="DJ con la mano arriba en FESTA Vol. 01" loading="lazy" decoding="async"></picture></a>
-    <a href="img/pista.jpg" target="_blank" rel="noopener" class="g3"><picture><source type="image/webp" srcset="img/pista-800.webp 800w, img/pista-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/pista.jpg" alt="La pista llena frente a la cabina en FESTA Vol. 01" loading="lazy" decoding="async"></picture></a>
+    <a href="img/kronic.jpg" target="_blank" rel="noopener" class="g1"><picture><source type="image/webp" srcset="img/kronic-800.webp 800w, img/kronic-1600.webp 1600w" sizes="(max-width:900px) 100vw, 50vw"><img width="1600" height="1066" src="img/kronic.jpg" alt="Kronic en la cabina durante FESTA Vol. 01" data-i18n-attr="alt:altKronic" loading="lazy" decoding="async"></picture></a>
+    <a href="img/cabina.jpg" target="_blank" rel="noopener" class="g2"><picture><source type="image/webp" srcset="img/cabina-600.webp 600w, img/cabina-1000.webp 1000w" sizes="(max-width:900px) 50vw, 25vw"><img width="1000" height="1500" src="img/cabina.jpg" alt="Cabina de FESTA Vol. 01 en Rollertec Club" data-i18n-attr="alt:altCabina" loading="lazy" decoding="async"></picture></a>
+    <a href="img/hero.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" sizes="(max-width:900px) 50vw, 25vw"><img width="2000" height="1333" src="img/hero.jpg" alt="La pista de FESTA Vol. 01 con luces naranjas" data-i18n-attr="alt:altPista1" loading="lazy" decoding="async"></picture></a>
+    <a href="img/dj.jpg" target="_blank" rel="noopener"><picture><source type="image/webp" srcset="img/dj-800.webp 800w, img/dj-1600.webp 1600w" sizes="(max-width:900px) 50vw, 25vw"><img width="2000" height="1333" src="img/dj.jpg" alt="DJ con la mano arriba en FESTA Vol. 01" data-i18n-attr="alt:altDj2" loading="lazy" decoding="async"></picture></a>
+    <a href="img/pista.jpg" target="_blank" rel="noopener" class="g3"><picture><source type="image/webp" srcset="img/pista-800.webp 800w, img/pista-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/pista.jpg" alt="La pista llena frente a la cabina en FESTA Vol. 01" data-i18n-attr="alt:altPista2" loading="lazy" decoding="async"></picture></a>
   </div>
 </section>
 
@@ -523,13 +530,13 @@
 <section id="lista" class="signup reveal" style="position:relative">
   <div class="orbs" aria-hidden="true" style="opacity:.6"><i></i><i></i><i></i></div>
   <span class="small" style="color:var(--o);display:block;margin-bottom:12px">06 — Contact</span>
-  <h2>Entra en la lista de FESTA</h2>
-  <p>Sé el primero en enterarte del próximo FESTA. Déjanos tu email y te escribimos cuando se abra el acceso al siguiente volumen.</p>
+  <h2 data-i18n="listH">Entra en la lista de FESTA</h2>
+  <p data-i18n="listP">Sé el primero en enterarte del próximo FESTA. Déjanos tu email y te escribimos cuando se abra el acceso al siguiente volumen.</p>
   <form id="f" action="mailto:festaofc@gmail.com" method="post" enctype="text/plain">
-    <label for="email" class="sr">Tu email</label><input id="email" type="email" name="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="tu@email.com…" required>
-    <button type="submit">Unirme a la lista</button>
+    <label for="email" class="sr" data-i18n="emailLabel">Tu email</label><input id="email" type="email" name="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="tu@email.com…" required data-i18n-attr="placeholder:ph">
+    <button type="submit" data-i18n="join">Unirme a la lista</button>
   </form>
-  <p class="note">Se abrirá tu app de correo para enviarnos el mensaje.</p>
+  <p class="note" data-i18n="note">Se abrirá tu app de correo para enviarnos el mensaje.</p>
 </section>
 
 </main>
@@ -567,11 +574,34 @@
   links.forEach(a=>{const t=document.querySelector(a.getAttribute('href'));t&&secIO.observe(t)});
   addEventListener('resize',()=>moveBlob(current));
   hd.addEventListener('transitionend',()=>moveBlob(current));
+  // ---- idioma ES / EN
+  const I18N_EN={"skip": "Skip to content", "brand": "FESTA — home", "accessAria": "Guests only: request access on Instagram", "guests": "Guests only", "nav1": "Party", "nav2": "About us", "nav3": "Where we are", "nav4": "DJs", "nav5": "Photos", "nav6": "Contact", "cta": "Request access", "cdd": "Days", "cdh": "Hours", "cdm": "Min", "cds": "Sec", "cdlabel": "Until the Kronic Bday Bash", "cdToday": "Today is the Kronic Bday Bash", "events": "Events", "sold": "Sold out", "tba": "Date to be announced", "notify": "Notify me", "altDj": "DJ in the booth during FESTA Vol. 01", "altFlyer": "Official FESTA Vol. 01 flyer", "reel": "Watch the reel ↗", "aboutLabel": "02 — About us", "ftext": "An underground electronic music party founded by <a href=\"https://www.instagram.com/kronicm/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--o2)\">Kronic</a>. Tech house and afro house with local DJs, artists from across Venezuela and tomorrow’s international DJs. Your pass to a night where everyone is on another planet.", "chip3": "Local DJs", "chip4": "Venezuela → the world", "altCabina": "FESTA Vol. 01 booth at Rollertec Club", "whereLabel": "03 — Where we are", "whereP": "Born in Maracaibo, the #HornoCity. Every FESTA edition moves to a new venue, and the location is revealed only to those on the list.", "revealed": "Revealed to guests · 28.11.2026", "luH": "DJs we’ve<br>shared the booth with", "galLabel": "05 — Gallery · FESTA Vol. 01", "galH": "How it went down", "altKronic": "Kronic in the booth during FESTA Vol. 01", "altPista1": "The FESTA Vol. 01 dance floor in orange light", "altDj2": "DJ with a hand in the air at FESTA Vol. 01", "altPista2": "A packed dance floor in front of the booth at FESTA Vol. 01", "listH": "Join the FESTA list", "listP": "Be the first to hear about the next FESTA. Leave your email and we’ll write to you when access to the next volume opens.", "emailLabel": "Your email", "ph": "you@email.com…", "join": "Join the list", "note": "Your email app will open so you can send us the message.", "mailSubject": "FESTA list", "mailBody": "I want to join the FESTA list. My email: ", "metaDesc": "FESTA · Underground electronic music party in Venezuela. Tech house and afro house. Kronic Bday Bash, Vol. 02 — 28.11.2026, secret location."};
+  const I18N_ES={cdToday:'Hoy es el Kronic Bday Bash',mailSubject:'Lista FESTA',mailBody:'Quiero entrar en la lista de FESTA. Mi email: '};
+  document.querySelectorAll('[data-i18n]').forEach(el=>{I18N_ES[el.dataset.i18n]??=el.textContent});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{I18N_ES[el.dataset.i18nHtml]??=el.innerHTML});
+  document.querySelectorAll('[data-i18n-attr]').forEach(el=>{const [a,k]=el.dataset.i18nAttr.split(':');I18N_ES[k]??=el.getAttribute(a)});
+  const metaD=document.querySelector('meta[name="description"]');I18N_ES.metaDesc=metaD.content;
+  let LANG='es';const t=k=>(LANG==='en'?I18N_EN:I18N_ES)[k];
+  function setLang(l,save){LANG=l==='en'?'en':'es';const D=LANG==='en'?I18N_EN:I18N_ES;
+    document.documentElement.lang=LANG;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{if(D[el.dataset.i18n]!=null)el.textContent=D[el.dataset.i18n]});
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{if(D[el.dataset.i18nHtml]!=null)el.innerHTML=D[el.dataset.i18nHtml]});
+    document.querySelectorAll('[data-i18n-attr]').forEach(el=>{const [a,k]=el.dataset.i18nAttr.split(':');if(D[k]!=null)el.setAttribute(a,D[k])});
+    metaD.content=D.metaDesc;
+    document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===LANG));
+    if(save){try{localStorage.setItem('festa-lang',LANG)}catch(e){}
+      const u=new URL(location.href);LANG==='en'?u.searchParams.set('lang','en'):u.searchParams.delete('lang');history.replaceState(null,'',u)}
+    if(typeof moveBlob==='function')requestAnimationFrame(()=>moveBlob(current));}
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang,true)));
+  (function(){let l=new URLSearchParams(location.search).get('lang');
+    if(!l){try{l=localStorage.getItem('festa-lang')}catch(e){}}
+    if(!l){l=(navigator.languages||[navigator.language||'es']).some(x=>/^es/i.test(x))?'es':'en'}
+    setLang(l,false)})();
   // cuenta regresiva: 28.11.2026, hora de Venezuela (UTC-4)
   const T=Date.parse('2026-11-28T00:00:00-04:00'),cEl=document.getElementById('count');
   const pad=n=>String(n).padStart(2,'0');
   function tick(){let d=Math.max(0,T-Date.now());
-    if(d===0){cEl.style.display='none';document.getElementById('countLabel').textContent='Hoy es el Kronic Bday Bash';return}
+    if(d===0){cEl.style.display='none';document.getElementById('countLabel').textContent=t('cdToday');return}
     const v={d:Math.floor(d/864e5),h:Math.floor(d/36e5)%24,m:Math.floor(d/6e4)%60,s:Math.floor(d/1e3)%60};
     cEl.querySelectorAll('b').forEach(b=>b.textContent=pad(v[b.dataset.k]));}
   tick();setInterval(tick,1000);
@@ -586,7 +616,7 @@
   document.getElementById('f').addEventListener('submit',e=>{
     e.preventDefault();
     const m=e.target.email.value.trim();
-    location.href='mailto:festaofc@gmail.com?subject='+encodeURIComponent('Lista FESTA')+'&body='+encodeURIComponent('Quiero entrar en la lista de FESTA. Mi email: '+m);
+    location.href='mailto:festaofc@gmail.com?subject='+encodeURIComponent(t('mailSubject'))+'&body='+encodeURIComponent(t('mailBody')+m);
   });
 </script>
 </body>
