@@ -162,13 +162,27 @@
 
   /* ---------- CARDS ---------- */
   .cards{position:relative;z-index:5;max-width:1240px;margin:-70px auto 0;padding:0 var(--g);display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .card{display:flex;gap:14px;background:rgba(19,19,21,.92);border:1px solid var(--line);border-radius:14px;padding:12px;backdrop-filter:blur(8px);transition:border-color .25s,transform .25s}
+  .card{display:flex;gap:14px;position:relative;isolation:isolate;overflow:hidden;border-radius:18px;padding:12px;
+    background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 40%,rgba(255,120,40,.04) 75%,rgba(255,255,255,.06)),rgba(12,10,10,.10);
+    -webkit-backdrop-filter:blur(12px) saturate(180%) brightness(1.05);backdrop-filter:blur(12px) saturate(180%) brightness(1.05);
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(255,255,255,.06),0 14px 40px rgba(0,0,0,.4);
+    transition:transform .5s cubic-bezier(.22,1.25,.36,1),box-shadow .4s,border-color .3s}
+  .card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;pointer-events:none;z-index:2;
+    background:linear-gradient(115deg,rgba(255,255,255,.7),rgba(255,255,255,0) 24%,rgba(255,170,100,.5) 48%,rgba(255,255,255,0) 68%,rgba(255,255,255,.55) 88%,rgba(255,255,255,0));
+    background-size:250% 250%;animation:rim 9s ease-in-out infinite;
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+  .card::after{content:"";position:absolute;z-index:-1;width:300px;height:300px;left:var(--mx);top:var(--my);transform:translate(-50%,-50%);pointer-events:none;
+    background:radial-gradient(circle,rgba(255,255,255,.2),rgba(255,150,80,.12) 40%,transparent 68%);filter:blur(6px);
+    animation:wander 15s ease-in-out infinite alternate;transition:--mx .9s cubic-bezier(.22,1,.36,1),--my .9s cubic-bezier(.22,1,.36,1)}
+  .card:nth-child(2)::after{animation-delay:-5s}.card:nth-child(3)::after{animation-delay:-10s}
+  .card.hov::after{animation:none}
   .card{--n:103px;-webkit-mask:radial-gradient(circle 9px at var(--n) 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at var(--n) 100%,#0000 97%,#000) bottom/100% 51% no-repeat;
     mask:radial-gradient(circle 9px at var(--n) 0,#0000 97%,#000) top/100% 51% no-repeat,radial-gradient(circle 9px at var(--n) 100%,#0000 97%,#000) bottom/100% 51% no-repeat}
-  .card .info{border-left:1.5px dashed rgba(255,255,255,.18);padding-left:14px;margin-left:-1px;position:relative}
+  .card .info{border-left:1.5px dashed rgba(255,255,255,.28);padding-left:14px;margin-left:-1px;position:relative}
   .card .no{position:absolute;top:0;right:0;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em}
   .card .d{font-family:var(--mono);font-size:11px!important;letter-spacing:.04em}
-  .card:hover{border-color:rgba(255,90,20,.6);transform:translateY(-3px)}
+  .card:hover{border-color:rgba(255,160,100,.45);transform:translateY(-4px) scale(1.01);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(255,255,255,.08),0 20px 50px rgba(0,0,0,.5),0 0 40px rgba(255,90,20,.2)}
   .thumb{flex:0 0 84px;height:104px;border-radius:8px;overflow:hidden;background:linear-gradient(160deg,#ff9a3a,#e8430a);display:grid;place-items:center;color:#fff}
   .thumb{position:relative}
   .thumb img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
@@ -316,7 +330,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
-    .bar::after{display:none}
+    .bar::after,.card::after{display:none}
     .reveal{opacity:1;transform:none}
     .hero h1 .w,.hero .sub,.hero .btn,.count,.count-label{opacity:1;transform:none}
   }
@@ -508,6 +522,10 @@
   bar.addEventListener('pointermove',e=>{const r=bar.getBoundingClientRect();bar.classList.add('hov');
     bar.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');bar.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')});
   bar.addEventListener('pointerleave',()=>bar.classList.remove('hov'));
+  document.querySelectorAll('.card').forEach(c=>{
+    c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.classList.add('hov');
+      c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')});
+    c.addEventListener('pointerleave',()=>c.classList.remove('hov'))});
   let current=null;
   function moveBlob(a){if(!a){blob.style.opacity=0;return}
     blob.style.left=a.parentElement.offsetLeft+'px';blob.style.top=a.parentElement.offsetTop+'px';
