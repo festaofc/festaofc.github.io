@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FESTA — Productora de eventos</title>
+<meta name="description" content="FESTA · Productora de eventos. Creamos noches que se recuerdan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800;900&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wall:#0c0c0e;
+    --wall-dark:#cfd2d6;
+    --ink:#f2f0ec;
+    --blue:#ff5a14;
+    --blue-light:#ffa630;
+    --muted:#a3a5aa;
+    --sans:"Inter Tight",system-ui,sans-serif;
+    --tag:"Sedgwick Ave Display","Brush Script MT",cursive;
+    --gutter:clamp(16px,4vw,48px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--wall);
+    color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* textura de pared / concreto */
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(ellipse at 15% 20%,rgba(255,255,255,.18),transparent 45%),
+      radial-gradient(ellipse at 85% 70%,rgba(255,255,255,.12),transparent 50%),
+      radial-gradient(ellipse at 60% 10%,rgba(180,185,192,.35),transparent 40%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity:.16}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--blue);color:#fff}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:20;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px var(--gutter);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:14px;letter-spacing:.02em}
+  .logo i{width:16px;height:16px;border:3px solid var(--ink);border-radius:50%;border-right-color:var(--blue)}
+  nav ul{display:flex;gap:clamp(14px,2.4vw,32px);list-style:none}
+  nav ul a,.cta{transition:color .2s}
+  nav ul a:hover,.cta:hover{color:var(--blue)}
+  .cta{justify-self:end}
+
+  /* utilidades */
+  .arrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+  .arrow svg{width:26px;height:26px;transition:transform .3s}
+  .arrow:hover svg{transform:translate(4px,-4px)}
+  .arrow:hover{color:var(--blue)}
+  .small{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  section,header{position:relative;overflow:hidden}
+  .spray{position:absolute;pointer-events:none;overflow:visible}
+  .draw path.d{stroke-dasharray:var(--len,3000);stroke-dashoffset:var(--len,3000);transition:stroke-dashoffset 2.2s cubic-bezier(.6,.05,.3,1)}
+  .draw.in path.d{stroke-dashoffset:0}
+  .fade{opacity:0;transition:opacity 1.6s .4s}
+  .in .fade,.fade.in{opacity:1}
+
+  /* HERO */
+  .hero{min-height:100svh;display:flex;align-items:center;padding:110px var(--gutter) 60px;background:radial-gradient(ellipse at 70% 55%,rgba(255,90,20,.10),transparent 60%),#0c0c0e}
+  .words{font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.045em;font-size:clamp(42px,9.6vw,148px);color:#fff;opacity:.92;text-shadow:0 0 40px rgba(255,255,255,.18)}
+  .words span{display:block;opacity:0;transform:translateY(30px);animation:up 1s forwards}
+  .words span:nth-child(2){animation-delay:.08s}.words span:nth-child(3){animation-delay:.16s}.words span:nth-child(4){animation-delay:.24s}.words span:nth-child(5){animation-delay:.32s}
+  @keyframes up{to{opacity:1;transform:none}}
+  .hero .spray{inset:0;width:100%;height:100%;z-index:2}
+  .words{position:relative;z-index:1}
+  .crack{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .hero-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:24px;display:flex;justify-content:space-between;align-items:end;z-index:3}
+
+  /* SLOGAN */
+  .slogan{min-height:100svh;display:flex;align-items:center;padding:120px var(--gutter)}
+  .slogan .spray{left:-4%;top:50%;width:108%;transform:translateY(-50%)}
+  .slogan-row{position:relative;z-index:2;display:flex;align-items:flex-end;gap:clamp(20px,4vw,56px);flex-wrap:wrap;width:100%}
+  .huge{font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.05em;font-size:clamp(56px,12.5vw,190px)}
+  .side{max-width:260px;padding-bottom:12px}
+  .side h3{font-size:22px;font-weight:800;letter-spacing:.02em;margin:8px 0 10px}
+  .side p{font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:28px}
+
+  /* EVENTO */
+  .event{padding:clamp(90px,12vw,160px) var(--gutter)}
+  .event-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:24px;position:relative;z-index:2}
+  .event h2{font-weight:900;text-transform:uppercase;letter-spacing:-.05em;line-height:.85;font-size:clamp(64px,15vw,230px)}
+  .event .spray{right:-2%;top:6%;width:min(60vw,700px)}
+  .details{display:grid;grid-template-columns:repeat(3,1fr);position:relative;z-index:2}
+  .details div{padding:22px 0;border-bottom:1px solid rgba(242,240,236,.18)}
+  .details b{display:block;font-size:clamp(22px,3vw,40px);font-weight:800;letter-spacing:-.03em;margin-top:6px;text-transform:uppercase}
+  .btn{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:#0c0c0e;padding:18px 28px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:background .25s}
+  .btn:hover{background:var(--blue)}
+  .btn svg{width:20px;height:20px}
+
+  /* SERVICIOS */
+  .services{padding:clamp(90px,12vw,160px) var(--gutter)}
+  .services-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:32px}
+  .row{display:grid;grid-template-columns:70px 1fr minmax(0,320px);gap:20px;align-items:center;padding:26px 0;border-top:2px solid var(--ink);transition:color .25s,padding .3s}
+  .row:last-child{border-bottom:2px solid var(--ink)}
+  .row:hover{color:var(--blue);padding-left:14px}
+  .row .n{font-weight:700;font-size:14px}
+  .row h4{font-weight:900;text-transform:uppercase;letter-spacing:-.045em;font-size:clamp(34px,6.5vw,96px);line-height:.9}
+  .row p{font-size:13px;line-height:1.6;color:var(--muted)}
+
+  /* MENSAJE */
+  .message{padding:clamp(100px,13vw,180px) var(--gutter) clamp(140px,16vw,220px)}
+  .message .small{margin-bottom:14px}
+  .message h2{position:relative;z-index:2;font-weight:900;text-transform:uppercase;letter-spacing:-.045em;line-height:.9;font-size:clamp(40px,7.6vw,118px)}
+  .message .spray{left:22%;bottom:-2%;width:min(80vw,1000px);z-index:3}
+  .message .arrow{position:absolute;right:var(--gutter);bottom:48px;z-index:4}
+
+  /* CONTACTO */
+  .contact{padding:clamp(90px,12vw,150px) var(--gutter);background:#f2f0ec;color:#0c0c0e}
+  .contact .small{color:#5a5c61}
+  .mail{display:block;font-weight:900;letter-spacing:-.05em;line-height:.9;font-size:clamp(40px,10vw,160px);margin:20px 0 48px;transition:color .25s;word-break:break-word}
+  .mail:hover{color:var(--blue)}
+  .socials{display:flex;gap:clamp(20px,4vw,48px);flex-wrap:wrap}
+  .socials a{font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:14px;display:inline-flex;gap:8px;align-items:center}
+  .socials a:hover{color:var(--blue)}
+  .socials svg{width:16px;height:16px}
+  .contact .spray{right:-6%;top:8%;width:min(55vw,620px);opacity:.9}
+  footer{background:#f2f0ec;color:#5a5c61;border-top:1px solid #d8d6d1;padding:22px var(--gutter);display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:820px){
+    nav{grid-template-columns:1fr auto}
+    nav ul{display:none}
+    .hero .spray{width:150%;left:-25%}
+    .row{grid-template-columns:44px 1fr}
+    .row p{grid-column:2}
+    .details{grid-template-columns:1fr 1fr}
+    .message .arrow{bottom:28px}
+    .words{font-size:14.5vw}
+    .slogan{flex-direction:column;align-items:stretch;min-height:auto}
+    .slogan .spray{position:relative;left:-6%;top:auto;width:112%;transform:none;margin-bottom:-38%}
+  }
+  @media (max-width:480px){
+    .details{grid-template-columns:1fr}
+    footer{flex-direction:column;gap:6px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .words span,.reveal,.fade{opacity:1;transform:none}
+    .draw path.d{stroke-dashoffset:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- Filtros de spray reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="spray" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.2"/>
+    </filter>
+    <filter id="haze" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="8" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="40" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="9"/>
+    </filter>
+    <filter id="dust" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="1" seed="11" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 1.5" result="m"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b"/>
+      <feComposite in="b" in2="m" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
+<nav>
+  <a href="#" class="logo"><i></i>FESTA</a>
+  <ul>
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#slogan">Nosotros</a></li>
+    <li><a href="#evento">Eventos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+  </ul>
+  <a href="#contacto" class="cta">Contacto ↗</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="crack" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,120 L60,150 L90,140 L130,190 L150,260 L120,330 L140,400" fill="none" stroke="#c9c7c2" stroke-width="1.2" opacity=".45"/>
+    <path d="M130,190 L190,205 L230,250" fill="none" stroke="#c9c7c2" stroke-width=".8" opacity=".35"/>
+    <path d="M760,420 L820,440 L900,430 L960,470 L1040,460" fill="none" stroke="#c9c7c2" stroke-width=".8" opacity=".3"/>
+  </svg>
+  <h1 class="words" aria-label="FESTA — productora de eventos">
+    <span>Last night</span>
+    <span>a DJ</span>
+    <span>saved</span>
+    <span>my life</span>
+  </h1>
+  <svg class="spray draw in" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <!-- sombra negra de spray -->
+    <g filter="url(#dust)" opacity=".5">
+      <text x="610" y="470" text-anchor="middle" font-family="Sedgwick Ave Display, cursive" font-size="330" fill="#fff" transform="rotate(-9 600 420)">Festa</text>
+    </g>
+    <!-- halo azul -->
+    <g filter="url(#haze)" opacity=".35">
+      <text x="600" y="460" text-anchor="middle" font-family="Sedgwick Ave Display, cursive" font-size="330" fill="#ff5a14" transform="rotate(-9 600 420)">Festa</text>
+    </g>
+    <!-- trazo principal -->
+    <g filter="url(#spray)" class="fade">
+      <text x="600" y="460" text-anchor="middle" font-family="Sedgwick Ave Display, cursive" font-size="330" fill="#ff5a14" transform="rotate(-9 600 420)">Festa</text>
+    </g>
+    <!-- remate / flecha -->
+    <g filter="url(#spray)">
+      <path class="d" style="--len:1300" d="M330,610 C520,560 780,520 1010,470 C1060,460 1090,440 1060,420 C1030,400 990,420 1040,450 L1110,500" fill="none" stroke="#ff5a14" stroke-width="22" stroke-linecap="round"/>
+    </g>
+    <!-- chorreados -->
+    <g filter="url(#spray)" stroke="#ff5a14" stroke-linecap="round" class="fade">
+      <line x1="405" y1="525" x2="405" y2="640" stroke-width="7"/><circle cx="405" cy="644" r="7" fill="#ff5a14"/>
+      <line x1="560" y1="500" x2="560" y2="575" stroke-width="6"/><circle cx="560" cy="579" r="6" fill="#ff5a14"/>
+      <line x1="745" y1="460" x2="745" y2="600" stroke-width="5"/><circle cx="745" cy="604" r="6" fill="#ff5a14"/>
+      <line x1="880" y1="436" x2="880" y2="505" stroke-width="5" stroke="#ff5a14"/><circle cx="880" cy="509" r="5" fill="#ff5a14"/>
+      <line x1="520" y1="588" x2="520" y2="690" stroke-width="6"/><circle cx="520" cy="694" r="6" fill="#ff5a14"/>
+    </g>
+  </svg>
+  <div class="hero-foot">
+    <span class="small">Maracaibo — Lago · Puente · Amanecer</span>
+    <span class="small">Scroll ↓</span>
+  </div>
+</header>
+
+<!-- SLOGAN -->
+<section id="slogan" class="slogan">
+  <svg class="spray draw" viewBox="0 0 1000 500" aria-hidden="true">
+    <g filter="url(#haze)" opacity=".45">
+      <path d="M500,250 C620,70 930,60 930,250 C930,440 620,430 500,250 C380,70 70,60 70,250 C70,440 380,430 500,250 Z" fill="none" stroke="#ff5a14" stroke-width="80"/>
+    </g>
+    <g filter="url(#spray)">
+      <path class="d" style="--len:2600" d="M500,250 C620,70 930,60 930,250 C930,440 620,430 500,250 C380,70 70,60 70,250 C70,440 380,430 500,250 Z" fill="none" stroke="#ff5a14" stroke-width="54" stroke-linecap="round"/>
+    </g>
+    <g filter="url(#spray)" stroke="#ff5a14" stroke-linecap="round" class="fade">
+      <line x1="95" y1="330" x2="95" y2="420" stroke-width="6"/><circle cx="95" cy="424" r="6" fill="#ff5a14"/>
+      <line x1="300" y1="392" x2="300" y2="450" stroke-width="5"/><circle cx="300" cy="454" r="5" fill="#ff5a14"/>
+      <line x1="140" y1="370" x2="140" y2="470" stroke-width="5"/><circle cx="140" cy="474" r="5" fill="#ff5a14"/>
+    </g>
+  </svg>
+  <div class="slogan-row reveal">
+    <h2 class="huge">Endless<br>Nights</h2>
+    <div class="side">
+      <span class="small">Slogan</span>
+      <h3>Noches sin fin</h3>
+      <p>Nacimos frente al Lago de Maracaibo. Creamos noches donde la música, la luz y la gente se vuelven una sola cosa, hasta que el sol sale detrás del puente.</p>
+      <a href="#evento" class="arrow">Ver más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTO -->
+<section id="evento" class="event">
+  <span class="small">Próximo evento</span>
+  <svg class="spray draw" viewBox="0 0 700 300" aria-hidden="true">
+    <g filter="url(#spray)">
+      <path class="d" style="--len:1500" d="M60,200 C140,60 300,40 330,120 C350,180 250,230 300,250 C380,280 520,120 640,90" fill="none" stroke="#ff5a14" stroke-width="20" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="event-top reveal">
+    <h2>Vol. 01</h2>
+    <a href="#contacto" class="btn">Reservar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
+  </div>
+  <div class="details reveal">
+    <div><span class="small">Fecha</span><b>13.12.2026</b></div>
+    <div><span class="small">Lugar</span><b>Por anunciar</b></div>
+    <div><span class="small">Hora</span><b>22:00 — 06:00</b></div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="services">
+  <div class="services-head reveal">
+    <span class="small">Servicios</span>
+    <span class="small">04</span>
+  </div>
+  <div class="reveal">
+    <div class="row"><span class="n">01</span><h4>Festivales</h4><p>Producción integral de eventos masivos, de la idea al último beat.</p></div>
+    <div class="row"><span class="n">02</span><h4>Privados</h4><p>Cumpleaños, aniversarios y celebraciones con alma de festival.</p></div>
+    <div class="row"><span class="n">03</span><h4>Producción</h4><p>Sonido, iluminación, visuales y escenografía a medida.</p></div>
+    <div class="row"><span class="n">04</span><h4>Line-up</h4><p>Curaduría y booking de DJs y artistas para cada noche.</p></div>
+  </div>
+</section>
+
+<!-- MENSAJE -->
+<section class="message">
+  <p class="small reveal">Nuestro mensaje — Del atardecer al amanecer sobre el lago.</p>
+  <h2 class="reveal">We create<br>nights that<br>live forever.<br>“Music” and “Freedom”.</h2>
+  <svg class="spray draw" viewBox="0 0 1000 400" aria-hidden="true">
+    <g filter="url(#haze)" opacity=".4">
+      <path d="M90,250 C180,130 250,90 280,150 C310,210 200,290 250,300 C330,315 370,120 420,140 C470,160 380,300 450,290 C540,275 570,140 620,170 C670,200 580,300 660,280 C740,260 780,170 860,190" fill="none" stroke="#ffa630" stroke-width="60"/>
+    </g>
+    <g filter="url(#spray)">
+      <path class="d" style="--len:2600" d="M90,250 C180,130 250,90 280,150 C310,210 200,290 250,300 C330,315 370,120 420,140 C470,160 380,300 450,290 C540,275 570,140 620,170 C670,200 580,300 660,280 C740,260 780,170 860,190" fill="none" stroke="#ffa630" stroke-width="26" stroke-linecap="round"/>
+      <path class="d" style="--len:1200" d="M20,360 C300,320 640,300 990,270" fill="none" stroke="#ff5a14" stroke-width="18" stroke-linecap="round"/>
+      <path class="d" style="--len:900" d="M150,330 C320,210 480,200 700,230" fill="none" stroke="#ff5a14" stroke-width="12" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <a href="#contacto" class="arrow">Ver más <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contact">
+  <svg class="spray draw" viewBox="0 0 600 400" aria-hidden="true">
+    <g filter="url(#spray)">
+      <path class="d" style="--len:1400" d="M80,300 C60,120 300,40 420,110 C540,180 460,330 300,330 C180,330 150,230 260,190" fill="none" stroke="#ff5a14" stroke-width="22" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <span class="small reveal">Contacto</span>
+  <a href="mailto:hola@festa.com" class="mail reveal">hola@festa.com</a>
+  <div class="socials reveal">
+    <a href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener">Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
+    <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
+    <a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 FESTA</span>
+  <span>Hecho en Maracaibo · Endless nights</span>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18});
+  document.querySelectorAll('.reveal,.draw').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
