@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="color-scheme" content="dark">
 <title>FESTA — Kronic Bday Bash · Vol. 02</title>
 <meta name="description" content="FESTA · Fiesta underground de música electrónica en Venezuela. Tech house y afro house. Kronic Bday Bash, Vol. 02 — 28.11.2026, secret location.">
 <link rel="preload" as="image" type="image/webp" imagesrcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
@@ -25,7 +27,11 @@
     --g:clamp(16px,4vw,40px);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;color-scheme:dark;scroll-padding-top:120px}
+  a,button,input{touch-action:manipulation;-webkit-tap-highlight-color:rgba(255,90,20,.25)}
+  h1,h2{text-wrap:balance}
+  .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--o);color:#000;padding:10px 14px;border-radius:8px;font-weight:800;transition:top .2s}
+  .skip:focus{top:12px}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%;height:auto}
@@ -45,7 +51,7 @@
   .small{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
   /* ---------- HEADER ---------- */
-  header{position:sticky;top:0;z-index:50;padding:10px var(--g) 0}
+  header{position:sticky;top:0;z-index:50;padding:max(10px,env(safe-area-inset-top)) max(var(--g),env(safe-area-inset-right)) 0 max(var(--g),env(safe-area-inset-left))}
   .bar{max-width:1240px;margin:0 auto;background:rgba(10,10,11,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
     border:1px solid var(--line);border-top:0;border-radius:0 0 18px 18px;box-shadow:0 10px 40px rgba(255,90,20,.12);padding:12px 20px 10px}
   .top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
@@ -70,21 +76,6 @@
   .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:saturate(1.15) contrast(1.05)}
   .photo::after{content:"";position:absolute;inset:0;background:
       linear-gradient(180deg,rgba(10,10,11,.92) 0%,rgba(10,10,11,.55) 28%,rgba(255,90,20,.12) 55%,rgba(10,10,11,.4) 78%,#0a0a0b 100%)}
-  .smoke{position:absolute;inset:-10%;z-index:-3;
-    background:
-      radial-gradient(ellipse 45% 40% at 50% 62%,rgba(255,120,40,.95),transparent 70%),
-      radial-gradient(ellipse 70% 55% at 50% 60%,rgba(255,90,20,.75),transparent 72%),
-      radial-gradient(ellipse 90% 70% at 50% 70%,rgba(160,40,0,.6),transparent 75%),
-      var(--bg)}
-  .fog{position:absolute;inset:-20%;z-index:-2;opacity:.3;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite alternate}
-  .fog svg{width:100%;height:100%}
-  @keyframes drift{from{transform:translate3d(-4%,0,0) scale(1.05)}to{transform:translate3d(4%,-3%,0) scale(1.12)}}
-  .beam{position:absolute;top:-10%;left:50%;width:22vw;max-width:320px;height:120%;z-index:-2;transform-origin:50% 0;
-    background:linear-gradient(180deg,rgba(255,220,180,.55),rgba(255,140,60,.12) 55%,transparent 80%);filter:blur(18px);mix-blend-mode:screen;animation:sweep 9s ease-in-out infinite alternate}
-  .beam.b2{transform:translateX(-50%) rotate(-24deg);animation-delay:-3s}
-  .beam.b3{transform:translateX(-50%) rotate(26deg);animation-delay:-6s}
-  .beam.b1{transform:translateX(-50%) rotate(2deg)}
-  @keyframes sweep{0%{opacity:.35}100%{opacity:.9}}
   .hero h1{font-family:var(--wide);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(26px,4.4vw,56px);line-height:1;letter-spacing:.005em;padding:0 var(--g);text-shadow:0 4px 30px rgba(0,0,0,.45)}
   .hero h1 .v{color:var(--o);text-shadow:0 0 30px rgba(255,90,20,.5)}
   .hero h1 .w{display:inline-block;opacity:0;transform:translateY(60%) skewY(6deg);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
@@ -107,17 +98,13 @@
   .btn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#fff;color:#000;border-radius:10px;padding:14px 24px;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s,background .2s}
   .btn:hover{transform:translateY(-2px);background:var(--o2);box-shadow:0 0 0 6px rgba(255,90,20,.25),0 10px 30px rgba(0,0,0,.35)}
   .btn svg{width:16px;height:16px}
-  .dj{position:absolute;left:50%;bottom:0;width:min(560px,92vw);transform:translateX(-50%);z-index:-1;color:#070707}
-  .dj svg{width:100%;height:auto;display:block}
-  .stage{position:absolute;left:0;right:0;bottom:0;height:16%;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.55),#070707 55%)}
-  .stage i{position:absolute;bottom:42%;width:10px;height:10px;border-radius:50%;background:#ffd9b0;box-shadow:0 0 18px 6px rgba(255,140,60,.8);animation:blink 2.4s ease-in-out infinite}
-  @keyframes blink{50%{opacity:.35}}
 
   /* cintas cruzadas */
   .tape{position:absolute;left:-30%;width:160%;height:clamp(30px,3.4vw,44px);background:var(--o);color:#0a0a0b;display:flex;align-items:center;overflow:hidden;z-index:2;
     box-shadow:0 8px 30px rgba(0,0,0,.45);font-family:var(--wide);font-stretch:125%;font-weight:900;font-size:clamp(11px,1.2vw,15px);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
   .tape .track{display:flex;gap:28px;padding-left:28px;animation:marquee 38s linear infinite}
   .tape.r .track{animation-direction:reverse}
+  .hero:hover .tape .track,.bigtype:hover .bt-track{animation-play-state:paused}
   .tape span{display:inline-flex;align-items:center;gap:28px}
   .tape span::after{content:"✺";font-size:1.2em}
   .t1{top:57%;transform:rotate(-12deg)}
@@ -230,6 +217,7 @@
   form input::placeholder{color:#6d6f74}
   form button{background:var(--o);color:#000;border:0;border-radius:9px;padding:13px 22px;font:900 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s}
   form button:hover{background:var(--o2)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   form:focus-within{border-color:rgba(255,90,20,.6)}
   .note{font-size:12px!important;margin-top:12px!important}
 
@@ -306,6 +294,7 @@
   </defs>
 </svg>
 
+<a class="skip" href="#main">Saltar al contenido</a>
 <header>
   <div class="bar">
     <div class="top">
@@ -316,9 +305,9 @@
       </div>
       <a href="#" class="brand" aria-label="FESTA — inicio">
         <small>Kronic presents</small>
-        <b><svg aria-hidden="true"><use href="#sun"/></svg>FESTA</b>
+        <b translate="no"><svg aria-hidden="true"><use href="#sun"/></svg>FESTA</b>
       </a>
-      <a href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener" class="access"><span>Solo invitados</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v12" stroke-dasharray="2 2"/></svg></a>
+      <a href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener" class="access" aria-label="Solo invitados: pedir acceso por Instagram"><span>Solo invitados</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v12" stroke-dasharray="2 2"/></svg></a>
     </div>
     <nav>
       <ul>
@@ -333,11 +322,12 @@
   </div>
 </header>
 
+<main id="main">
 <!-- HERO -->
 <section class="hero">
   <div class="photo"><picture><source type="image/webp" srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" sizes="100vw"><img width="2000" height="1333" src="img/hero.jpg" alt="" fetchpriority="high" decoding="async"></picture></div>
 
-  <h1><span class="w">Kronic</span> <span class="w" style="animation-delay:.08s">Bday</span> <span class="w" style="animation-delay:.16s">Bash</span> <span class="v w" style="animation-delay:.3s">Vol. 02</span></h1>
+  <h1 translate="no"><span class="w">Kronic</span> <span class="w" style="animation-delay:.08s">Bday</span> <span class="w" style="animation-delay:.16s">Bash</span> <span class="v w" style="animation-delay:.3s">Vol. 02</span></h1>
   <p class="sub">FESTA — 28.11.2026 — Secret location</p>
   <a class="btn" href="https://www.instagram.com/festaofc_/" target="_blank" rel="noopener">Pedir acceso <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 18L18 6M8 6h10v10"/></svg></a>
   <div class="count" id="count" aria-live="off"><div><b data-k="d">--</b><span>Días</span></div><div><b data-k="h">--</b><span>Horas</span></div><div><b data-k="m">--</b><span>Min</span></div><div><b data-k="s">--</b><span>Seg</span></div></div>
@@ -345,9 +335,9 @@
   <p class="corner l"><i>●</i> 10°39′N · 71°38′W<br>Maracaibo · VE</p>
   <p class="corner r">Vol. 02 / Tech · Afro House<br>Solo invitados</p>
 
-  <div class="tape t1"><div class="track"><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span></div></div>
-  <div class="tape t2 r"><div class="track"><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span></div></div>
-  <div class="tape t3"><div class="track"><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span></div></div>
+  <div class="tape t1" aria-hidden="true"><div class="track"><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span><span>Last night a DJ saved my life</span><span>Kronic Bday Bash</span><span>Vol. 02</span><span>Secret location</span></div></div>
+  <div class="tape t2 r" aria-hidden="true"><div class="track"><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span><span>28.11.2026</span><span>Solo invitados</span><span>Tech house</span><span>Afro house</span><span>FESTA</span></div></div>
+  <div class="tape t3" aria-hidden="true"><div class="track"><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span><span>Endless nights</span><span>Underground</span><span>Maracaibo</span><span>Kronic presents FESTA</span></div></div>
 
 </section>
 
@@ -381,7 +371,7 @@
       <span>Ver el reel ↗</span>
     </a>
     <div class="fcontent">
-      <span class="small" style="color:var(--o)">02 — Qué somos</span><div class="wm" style="margin-top:14px"><small>Kronic presents</small><b><svg aria-hidden="true"><use href="#sun"/></svg>FESTA</b></div>
+      <span class="small" style="color:var(--o)">02 — Qué somos</span><div class="wm" style="margin-top:14px"><small>Kronic presents</small><b translate="no"><svg aria-hidden="true"><use href="#sun"/></svg>FESTA</b></div>
       <p class="ftext">Una fiesta underground de música electrónica fundada por <a href="https://www.instagram.com/kronicm/" target="_blank" rel="noopener" style="color:var(--o2)">Kronic</a>. Tech house y afro house con DJs locales, nacionales de Venezuela y los futuros DJs internacionales. Tu pase a una noche donde todo el mundo está en otro planeta.</p>
       <div class="chips"><span>Tech house</span><span>Afro house</span><span>DJs locales</span><span>Venezuela → mundo</span></div>
     </div>
@@ -438,11 +428,13 @@
   <h2>Entra en la lista de FESTA</h2>
   <p>Sé el primero en enterarte del próximo FESTA. Déjanos tu email y te escribimos cuando se abra el acceso al siguiente volumen.</p>
   <form id="f" action="mailto:festaofc@gmail.com" method="post" enctype="text/plain">
-    <input type="email" name="email" placeholder="Tu email" required aria-label="Tu email">
-    <button type="submit">Enviar</button>
+    <label for="email" class="sr">Tu email</label><input id="email" type="email" name="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="tu@email.com…" required>
+    <button type="submit">Unirme a la lista</button>
   </form>
   <p class="note">Se abrirá tu app de correo para enviarnos el mensaje.</p>
 </section>
+
+</main>
 
 <footer>
   <div class="socials">
@@ -466,7 +458,7 @@
   tick();setInterval(tick,1000);
   // cursor personalizado (solo con ratón)
   if(matchMedia('(pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
-    const c=document.createElement('div');c.className='cursor';document.body.appendChild(c);
+    const c=document.createElement('div');c.className='cursor';c.setAttribute('aria-hidden','true');document.body.appendChild(c);
     let x=0,y=0,cx=0,cy=0;addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY;c.classList.add('on')});
     document.addEventListener('mouseleave',()=>c.classList.remove('on'));
     document.querySelectorAll('a,button,input').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('big'));el.addEventListener('mouseleave',()=>c.classList.remove('big'))});
